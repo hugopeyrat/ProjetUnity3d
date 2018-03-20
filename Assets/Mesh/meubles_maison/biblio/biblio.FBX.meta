@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 48803f095490aeb4ba622d20ed412142
-timeCreated: 1521560309
+guid: 3f4458e570fd3b744903bc475745d54d
+timeCreated: 1521564269
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: bureau_coin
+    2100000: biblio
     2300000: //RootNode
     3300000: //RootNode
-    4300000: bureau_coin
+    4300000: biblio
     9500000: //RootNode
   externalObjects: {}
   materials:

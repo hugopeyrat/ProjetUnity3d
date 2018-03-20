@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: aa20c6b6f0c4bbf4bbd246ca6e674c3a
-timeCreated: 1521551310
+guid: 367561661372b92438d1508be9e2688e
+timeCreated: 1521559532
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: bureau_droit
+    2100000: fauteuil
     2300000: //RootNode
     3300000: //RootNode
-    4300000: bureau_droit
+    4300000: fauteuil
     9500000: //RootNode
   externalObjects: {}
   materials:
