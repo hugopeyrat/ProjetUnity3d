@@ -5911,15 +5911,16 @@ GameObject:
 --- !u!114 &340043024
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114130103327336828, guid: 30c6c6af36fd0b540b0fbf6199e48798,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 340043023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: eee083cbc3f0a684da562c743442cf3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjetDetruit: {fileID: 0}
+  MainObj: {fileID: 1137424682}
 --- !u!23 &340043025
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18034,6 +18035,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b0821df0c9bc2049b5ccba39ffbfc63, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1137424682 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1601733823426954, guid: ae1fe9df3426d774ba59506f967aa48a,
+    type: 2}
+  m_PrefabInternal: {fileID: 927353011}
 --- !u!1001 &1138232503
 Prefab:
   m_ObjectHideFlags: 0
