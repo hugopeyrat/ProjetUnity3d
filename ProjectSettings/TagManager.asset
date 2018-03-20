@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fire
+  - Detecteur
+  - Destructible
+  - Collectible
+  - SecBout
+  - Trigger
   layers:
   - Default
   - TransparentFX
