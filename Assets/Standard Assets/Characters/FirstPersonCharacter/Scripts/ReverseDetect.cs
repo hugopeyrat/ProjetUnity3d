@@ -25,8 +25,9 @@ public class ReverseDetect : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E) && isTriggered == true && this.tag == "Collectible")
         {
 
-            MainObj.GetComponent<Animator>().Play("Anim_Regard_Haut");
+            MainObj.GetComponent<Animator>().Play("Robot_Anim_Interact1");
             Destroy(this.gameObject);
+            MainObj.GetComponent<Animator>().Play("Robot_Anim_Interact2");
             GameManager.s_Singleton.IncrementeObjet();
             SetInteract(false);
         }
