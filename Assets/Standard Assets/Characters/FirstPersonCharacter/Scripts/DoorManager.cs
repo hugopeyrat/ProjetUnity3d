@@ -26,13 +26,13 @@ public class DoorManager : MonoBehaviour {
         }
         else if(!GameManager.s_Singleton.ReturnDoor())
         {
-           // if()
              SwitchPorte("Closed");
+            //if
         }
         
 
 
-      //  if (is_triggered &&)
+      
     }
 
 

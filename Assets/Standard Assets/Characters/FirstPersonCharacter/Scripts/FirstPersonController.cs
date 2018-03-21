@@ -48,6 +48,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool is_freeze = false;
         private bool is_paused = false;
 
+        private GameObject ADetruire;
+
         //Debug
         private Vector3 deb_originalPosition;
 
@@ -68,7 +70,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             Cursor.visible = false;
 
-
+            
         }
 
 
@@ -106,8 +108,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
 
                 is_freeze = true;
-                
-                //lancer animation, fin animation -> Unfreeze
+
             }
 
             if (Input.GetKeyDown(KeyCode.F) && !is_freeze && !is_paused)
@@ -155,6 +156,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //GameObject.Find("UI/MainMenu").SetActive(arg);
             Debug.Log(GameManager.s_Singleton.ReturnTime());
         }
+
+
+        void OnTriggerEnter(Collider collisionInfo)
+        {
+            if(collisionInfo.GetComponent<Collider>().tag == "Collectible" || collisionInfo.GetComponent<Collider>().tag == "Destructible")
+            {
+                ADetruire = collisionInfo.gameObject;
+            }
+            
+        }
+
+        public void DestructTarget()
+        {
+            Destroy(ADetruire);
+        }
+
 
         private void PlayLandingSound()
         {

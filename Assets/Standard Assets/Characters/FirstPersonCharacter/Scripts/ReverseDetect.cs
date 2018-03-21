@@ -12,11 +12,12 @@ public class ReverseDetect : MonoBehaviour {
     private Quaternion actualRot;
     public GameObject ObjetDetruit;
     public GameObject MainObj;
-
+    public Animation anim;
 
     // Use this for initialization
     void Start()
     {
+        anim = GetComponent<Animation>();
     }
 
     // Update is called once per frame
@@ -25,45 +26,59 @@ public class ReverseDetect : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E) && isTriggered == true && this.tag == "Collectible")
         {
 
+
             MainObj.GetComponent<Animator>().Play("Robot_Anim_Interact1");
-            Destroy(this.gameObject);
-            MainObj.GetComponent<Animator>().Play("Robot_Anim_Interact2");
             GameManager.s_Singleton.IncrementeObjet();
             SetInteract(false);
         }
 
         if ((Input.GetKeyDown(KeyCode.E) && (isTriggered == true)) && ((this.tag == "SecBout") && (buttonCheck = false)))
         {
-            //Changer l'objet 
-            
             GameManager.s_Singleton.OpenDoor();
+
+            actualPlace = this.transform.position;
+            actualRot = this.transform.rotation;
+            Destruction();
+            Instantiate(ObjetDetruit, actualPlace, actualRot);
+            buttonCheck = true;
+            
             SetInteract(false);
         }
 
-        if ((Input.GetKeyDown(KeyCode.E) && (isTriggered == true)) && ((this.tag == "SecBout") && (buttonCheck = true)))
+        else if ((Input.GetKeyDown(KeyCode.E) && (isTriggered == true)) && ((this.tag == "SecBout") && (buttonCheck = true)))
         {
-            if(GameManager.s_Singleton.ReturnObjet() < 5)
+            if (GameManager.s_Singleton.ReturnObjet() < 5)
             {
                 GameManager.s_Singleton.CloseDoor();
             }
-            //Changer l'objet
+
+            actualPlace = this.transform.position;
+            actualRot = this.transform.rotation;
+            Destruction();
+            Instantiate(ObjetDetruit, actualPlace, actualRot);
+            buttonCheck = false;
+
             SetInteract(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && isTriggered == true && this.tag == "Destructible")
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            actualPlace = this.transform.position;
-            actualRot = this.transform.rotation;
-            Destroy(this.gameObject);
-            Instantiate(ObjetDetruit, actualPlace, actualRot);
-            SetHit(false);
-        }
+            MainObj.GetComponent<Animator>().Play("Robot_Animation1");
+            if(isTriggered == true && this.tag == "Destructible")
+            {
+                actualPlace = this.transform.position;
+                actualRot = this.transform.rotation;
+
+                Instantiate(ObjetDetruit, actualPlace, actualRot);
+                SetHit(false);
+            }
+         }
     }
 
     void OnTriggerEnter(Collider collisionInfo)
     {
 
-        if (collisionInfo.GetComponent<Collider>().tag == "Detecteur" && this.tag == "Collectible")
+        if (collisionInfo.GetComponent<Collider>().tag == "Detecteur" && (this.tag == "Collectible" || this.tag == "SecBout"))
         {
             SetInteract(true);
         }
@@ -75,7 +90,7 @@ public class ReverseDetect : MonoBehaviour {
 
         if (collisionInfo.GetComponent<Collider>().tag == "Detecteur" && this.tag == "Trigger")
         {
-            
+
             Destroy(this);
         }
     }
@@ -106,5 +121,10 @@ public class ReverseDetect : MonoBehaviour {
     {
         GameObject.Find("UI/UI_Hit").GetComponent<Image>().enabled = arg;
         isTriggered = arg;
+    }
+
+    public void Destruction()
+    {
+        Destroy(this.gameObject);
     }
 }
