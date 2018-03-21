@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour {
         var temp = timer / 60;
         var temp2 = timer % 60;
         var temp3 = ((temp - temp2) / 100) * 60;
-        return temp2.ToString() + "m " + temp3.ToString() + "s";
+        return temp.ToString() + "s";
     }
 
     public void PauseTime(bool arg)

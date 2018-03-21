@@ -49,6 +49,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool is_paused = false;
 
         private GameObject ADetruire;
+        public GameObject Plafonnier;
+        public GameObject ScreenBr;
 
         //Debug
         private Vector3 deb_originalPosition;
@@ -104,25 +106,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && !is_freeze && !is_paused)
-            {
-
-                is_freeze = true;
-
-            }
-
-            if (Input.GetKeyDown(KeyCode.F) && !is_freeze && !is_paused)
-            {
-
-                is_freeze = true;
-                
-                //lancer animation, fin animation -> Unfreeze
-            }
 
             if (Input.GetKeyDown(KeyCode.Escape) && !is_paused)
             {
-
-                //Possible code pour pause animation :  animation["Walk"].speed = 0;
+                
+                
                 PauseMenu(true);
             }
 
@@ -142,10 +130,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-
+        public void Freeze()
+        {
+            is_freeze = true;
+        }
         public void UnFreeze()
         {
             is_freeze = false;
+
         }
 
         public void PauseMenu(bool arg)
@@ -169,7 +161,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void DestructTarget()
         {
+
             Destroy(ADetruire);
+            if (ScreenBr.activeSelf == true)
+            {
+                ScreenBr.SetActive(false);
+            }
+        }
+
+        public void NeonTombe()
+        {
+            
+            Plafonnier.GetComponent<Animator>().Play("Light_tombe");
         }
 
 
@@ -178,6 +181,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource.clip = m_LandSound;
             m_AudioSource.Play();
             m_NextStep = m_StepCycle + .5f;
+        }
+
+        private void BrokenScreen()
+        {
+            ScreenBr.SetActive(true);
         }
 
 
